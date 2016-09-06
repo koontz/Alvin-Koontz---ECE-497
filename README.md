@@ -27,7 +27,7 @@ homework #1
 		down
 		right right right
 
-		produces
+	produces
 
 		Size 8 x 2
 		   0 1 2 3 4 5 6 7 
