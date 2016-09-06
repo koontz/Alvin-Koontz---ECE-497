@@ -13,9 +13,12 @@ homework #1
 
 6.) I signed up to both beagle Groups
 
-7.) 	Wrote the requested Etch-a-Sketch program and tested on the bone
-	I chose to write it in python becuase thats the easiest of the given languages for string manipulation
+7.) Wrote the requested Etch-a-Sketch program and tested on the bone. 
+	
+I chose to write it in python becuase thats the easiest of the given languages for string manipulation
+
 	located in hw01
+
 		usage: main.py -i <inputFile>
 		Input file needs to be plain text
 		Starting with size of the dislay grid like '8,8' on its own line
@@ -27,7 +30,7 @@ homework #1
 		down
 		right right right
 
-	produces
+produces
 
 		Size 8 x 2
 		   0 1 2 3 4 5 6 7 
