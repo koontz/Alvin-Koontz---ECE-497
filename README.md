@@ -12,3 +12,28 @@ homework #1
 5.) Git is amazing and is installed on every partion I own
 
 6.) I signed up to both beagle Groups
+
+7.) 	Wrote the requested Etch-a-Sketch program and tested on the bone
+	I chose to write it in python becuase thats the easiest of the given languages for string manipulation
+	located in hw01
+		usage: main.py -i <inputFile>
+		Input file needs to be plain text
+		Starting with size of the dislay grid like '8,8' on its own line
+		Everyline after that is a command for moving the 'pen' on the grid
+		Accpted commands are up,down,left,right,clear,u,d,l,r,c
+		example inpute file:
+
+		8,2
+		down
+		right right right
+
+		produces
+
+		Size 8 x 2
+		   0 1 2 3 4 5 6 7 
+		0: X               
+		1: X     X 
+
+		
+	
+
