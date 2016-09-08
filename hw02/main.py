@@ -30,9 +30,10 @@ def main():
 	print('Size {} x {}'.format(sizeX,sizeY))
 	print("Press enter to start")
 	raw_input()
+	#init curses window
 	stdscr = curses.initscr()
-	
 
+	#init the grid, and setup pins
 	for s in range(0,sizeY):
 		row = [False]*sizeX
 		output.append(row)
@@ -43,6 +44,7 @@ def main():
 	thread = threading.Thread(target= lambda:moveOnGrid(output,inputs,sizeX,sizeY))
         thread.start()
 
+	#wait for user to end the program
 	stdscr.getch()
 
 	curses.endwin()
@@ -72,6 +74,7 @@ def moveOnGrid(grid,inputs,sizeX,sizeY):
 					for NotLikeThis in range(0,len(grid)):
 						for BabyRage in range(0,len(grid[0])):
 							grid[NotLikeThis][BabyRage] = False
+		#keep the pen inside the grid
 		if(x>sizeX-1):
 	        	x = sizeX-1
 		if(x<0):
