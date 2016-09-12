@@ -34,3 +34,11 @@ produces
 		   0 1 2 3 4 5 6 7 
 		0: X               
 		1: X     X 
+
+
+==========
+Comments from Prof. Yoder
+It works as advertised, but I'd rather it be interactive, showing the display
+after every command.
+
+Grade:  10/10
