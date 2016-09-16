@@ -12,3 +12,13 @@ readTMP.sh is a shell file that reads the tempeture of each
 setTMP.sh is a shell file that sets the alert tempeture of each
 
 tmp101Reader.py is the program that waits for the alert pin before it reads the tempature sensors
+
+
+
+For the second part of the homework 
+Etch-a-sketch.py is a python implemention of of the program
+Press enter will quit the program,
+the button used are "P9_11","P9_12","P9_15","P9_21","P9_17"
+it uses the same i2c network as the first part of the homework
+It as you move over squares they turn green, going over the same squares turns it orange
+
