@@ -17,6 +17,9 @@ tmp101Reader.py is the program that waits for the alert pin before it reads the 
 
 For the second part of the homework 
 Etch-a-sketch.py is a python implemention of of the program
+###
+python-smbus needs to be installed for this program to work, just and apt-get install
+###
 Press enter will quit the program,
 the button used are "P9_11","P9_12","P9_15","P9_21","P9_17"
 it uses the same i2c network as the first part of the homework
