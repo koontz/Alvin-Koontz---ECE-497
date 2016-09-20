@@ -25,3 +25,8 @@ the button used are "P9_11","P9_12","P9_15","P9_21","P9_17"
 it uses the same i2c network as the first part of the homework
 It as you move over squares they turn green, going over the same squares turns it orange
 
+==========
+Comments from Prof. Mark A. Yoder
+Looks good.  The comments in the code are a good start, but more would be helpful.
+
+Grade:  Waiting on demo
