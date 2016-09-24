@@ -22,4 +22,8 @@ user to the current state of the led.
 
 
 
-pip install web.py
+apt-get install python-smbus
+pip install --upgrade Flask
+
+pip install python-socketio
+pip install eventlet
