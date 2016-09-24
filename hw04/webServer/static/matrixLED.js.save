@@ -18,36 +18,38 @@ $('#matrixLED').append(matrixData);
 
 // The slider controls the overall brightness
 $("#slider1").slider({min:0, max:15, slide: function(event, ui) {
-	socket.emit("brightness",  {i2cNum: i2cNum, i: ui.value+0xe0});
+	socket.emit("i2cset",  {i2cNum: i2cNum, i: ui.value+0xe0, disp: 1});
     }});
 
-// Send one color when LED is clicked.
+// Send one column when LED is clicked.
 function LEDclick(i, j) {
+//	alert(i+","+j+" clicked");
     var square = disp[i][j];
-    //Changes color on display
+//	socket.emit('i2c', i2cNum);
+    // Toggle bit on display
     if(square === 3) {
         disp[i][j] = 0;
-        $('#id'+i+'_'+j).removeClass('red');
+        $('#id'+i+'_'+j).addClass('red');
+        $('#id'+i+'_'+j).removeClass('orange');
     }else if(square === 2){
         disp[i][j] = 3;
-        $('#id'+i+'_'+j).removeClass('orange');
-        $('#id'+i+'_'+j).addClass('red');
-    }else if(square === 1){
-        disp[i][j] = 2;
         $('#id'+i+'_'+j).removeClass('green');
         $('#id'+i+'_'+j).addClass('orange');
+    }else if(square === 1){
+        disp[i][j] = 2;
+        $('#id'+i+'_'+j).removeClass('red');
     }else {
         disp[i][j] = 1;
         $('#id'+i+'_'+j).addClass('green');
     }
-    //instruct server what color it is
-    socket.emit('i2cset', {i2cNum: i2cNum, i: i, j: j, 
-			     disp: disp[i][j]});
+    socket.emit('i2cset', {i2cNum: i2cNum, i: , 
+			     disp: disp.toString(16)});
 }
 
-function connect() {
-    if(firstconnect) {
+    function connect() {
+      if(firstconnect) {
         socket = io.connect(null);
+
         // See https://github.com/LearnBoost/socket.io/wiki/Exposed-events
         // for Exposed events
         socket.on('message', function(data)
@@ -64,45 +66,58 @@ function connect() {
             { message("Reconnect Failed"); });
 
         socket.on('matrix',  matrix);
+
+    socket.emit('i2cset', {i2cNum: i2cNum, i: 0x21, disp: 1}); // Start oscillator (p10)
+    socket.emit('i2cset', {i2cNum: i2cNum, i: 0x81, disp: 1}); // Disp on, blink off (p11)
+    socket.emit('i2cset', {i2cNum: i2cNum, i: 0xe7, disp: 1}); // Full brightness (page 15)
+    /*
+	i2c_smbus_write_byte(file, 0x21); 
+	i2c_smbus_write_byte(file, 0x81);
+	i2c_smbus_write_byte(file, 0xe7);
+    */
         // Read display for initial image.  Store in disp[]
         socket.emit("matrix", i2cNum);
-      }else {
-        connect();
+
+        firstconnect = false;
+      }
+      else {
+        socket.socket.reconnect();
       }
     }
-function disconnect() {
-    socket.disconnect();
-}
 
-//Converts data into the display format
-function matrix(data) {
-    var i, j;
-	console.log(data);
-	for(i=0;i<data.length;i++){
-        for(j=0;j<data.length;j++){
-            disp[i][j] = data[i][j];
+    function disconnect() {
+      socket.disconnect();
+    }
+
+    // When new data arrives, convert it and display it.
+    // data is a string of 16 values, each a pair of hex digits.
+    function matrix(data) {
+        var i, j;
+        disp = [];
+        //        status_update("i2c: " + data);
+        // Make data an array, each entry is a pair of digits
+        data = data.split(" ");
+        //        status_update("data: " + data);
+        // Every other pair of digits are Green. The others are red.
+        // Ignore the red.
+        // Convert from hex.
+        for (i = 0; i < data.length; i += 2) {
+            disp[i / 2] = parseInt(data[i], 16);
         }
-	}
-    //updates the classes
-    for (i = 0; i < disp.length; i++) {
-        for (j = 0; j < disp.length; j++) {
-            changeColor(i,j,disp[i][j])
+        //        status_update("disp: " + disp);
+        // i cycles through each column
+        for (i = 0; i < disp.length; i++) {
+            // j cycles through each bit
+            for (j = 0; j < 8; j++) {
+                if (((disp[i] >> j) & 0x1) === 1) {
+                    $('#id' + i + '_' + j).addClass('on');
+                } else {
+                    $('#id' + i + '_' + j).removeClass('on');
+                }
+            }
         }
     }
-}
-//function to update color classes
-function changeColor(i,j,val){
-    $('#id' + i + '_' + j).removeClass('red');
-    $('#id' + i + '_' + j).removeClass('green');
-    $('#id' + i + '_' + j).removeClass('orange');
-    if(val ===3){
-        $('#id' + i + '_' + j).addClass('red');
-    }else if(val===2){
-        $('#id' + i + '_' + j).addClass('orange');
-    }else if(val===1){
-        $('#id' + i + '_' + j).addClass('green');
-    }
-}
+
     function status_update(txt){
 	$('#status').html(txt);
     }

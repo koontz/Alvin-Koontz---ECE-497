@@ -14,16 +14,23 @@ connection by saying " 'matrix' + data_of_matrix ". Now on the client side they 
 matrix response and run the function that updates the html classes to visually update the 
 user to the current state of the led. 
 
-2) When an led is click on in the browser the 
+2) When an led is click on in the browser, the table entry has an onclick function that is 
+called with the location of the led, the onclick function uses socket.io to communicate with 
+the server and tell it which led has been clicked and to set that led to on 
 
-3)
+3)the 'on' class colors the led green with the background color and provides a border
 
-4)
+4)If I was using boneserver.js a second i2cset emit with io socket would work to set the 
+green and the red leds to the correct color. The structure for keeping track of leds would 
+have to be changed to have a red and green section. Also the get led data would have to 
+redone to include the red from updating from display.
 
+5)Just for funsies I wrote my own server on the bone, just run './server' it is set to use 
+port 8090. The server uses python methods for all the control
 
+The following packages are needed to run the server
 
 apt-get install python-smbus
 pip install --upgrade Flask
-
 pip install python-socketio
 pip install eventlet
