@@ -14,7 +14,7 @@ connection by saying " 'matrix' + data_of_matrix ". Now on the client side they 
 matrix response and run the function that updates the html classes to visually update the 
 user to the current state of the led. 
 
-2) When an led is click on in the browser, the table entry has an onclick function that is 
+2) When an led is clicked on in the browser, the table entry has an onclick function that is 
 called with the location of the led, the onclick function uses socket.io to communicate with 
 the server and tell it which led has been clicked and to set that led to on 
 
@@ -34,3 +34,11 @@ apt-get install python-smbus
 pip install --upgrade Flask
 pip install python-socketio
 pip install eventlet
+
+==========
+Prof. Yoder's comments
+Nice use of directories for the various parts
+Also, nice touch using python for the server (+1)
+Late: (-1)
+
+Grade:  10/10
