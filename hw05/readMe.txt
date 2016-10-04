@@ -48,3 +48,9 @@ root@koontz_bone:~#
 
 PUSHING TO CLOUD)
 saves to an intermetary data.json for debugging i guess
+was demoed in class
+
+KERNEL)
+I successfully compiled to kernel, took about 9 minutes on my desktop
+installing it was more tricky, i tried to just plug in the sd card to my desktop 
+and install that way, but it failed both times, moutning using sshfs worked though
