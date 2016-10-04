@@ -47,3 +47,4 @@ This address (0x20660) is in our data section
 root@koontz_bone:~# 
 
 PUSHING TO CLOUD)
+saves to an intermetary data.json for debugging i guess
