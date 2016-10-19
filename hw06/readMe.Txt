@@ -4,3 +4,10 @@ left IR detecter, and P9_40 is the right. I dont think there really is anything 
 my program to note on. But i have noticed that the intial steps on the stepper motor 
 sometimes mess up and dont move the right amount. Also the IR sensors are a bet lack luster 
 but the real time tracking can deal with it.
+
+==========
+Prof. Yoder's comments
+Looks good and complete.
+Did you work with anyone?
+
+Grade:  10/10
