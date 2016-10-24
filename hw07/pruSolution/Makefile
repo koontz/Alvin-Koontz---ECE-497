@@ -15,7 +15,7 @@
 # PRU_CGT environment variable must point to the TI PRU compiler directory.
 # PRU_SUPPROT points to pru-software-support-package
 # Both are set in setup.sh
-
+PRU_SUPPORT=/opt/source/pru-software-support-package
 LINKER_COMMAND_FILE=./AM335x_PRU.cmd
 LIBS=--library=$(PRU_SUPPORT)/lib/rpmsg_lib.lib
 INCLUDE=--include_path=$(PRU_SUPPORT)/include --include_path=$(PRU_SUPPORT)/include/am335x

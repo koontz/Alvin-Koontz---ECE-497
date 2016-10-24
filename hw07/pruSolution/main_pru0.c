@@ -35,7 +35,8 @@
  */
 				  
 #include <stdint.h>
-#include <pru_cfg.h>
+//#include <pru_cfg.h>
+#include "/opt/source/pru-software-support-package/include/am335x/pru_cfg.h"
 // #include <pru_ctrl.h>
 #include "resource_table_pru1.h"
 
@@ -55,8 +56,12 @@ void main(void) {
     /* Clear SYSCFG[STANDBY_INIT] to enable OCP master port */
 	CT_CFG.SYSCFG_bit.STANDBY_INIT = 0;
 
-	while(!(__R31&(1<<3))) {
-		__R30 ^= 1<<5;
+	while(1) {
+        if(__R31&(1<<3)){
+    		__R30 |= 1<<5;
+        }else{
+            __R30 = 0;
+        }
 		__delay_cycles(TIME);
 		// __R30 &= ~(1<<5);
 		// __delay_cycles(TIME);
