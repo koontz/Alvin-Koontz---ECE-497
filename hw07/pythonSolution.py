@@ -7,7 +7,7 @@ running = True
 def main():
 	global running # other wise we cant stop thread
 	out = "P9_27"
-	input = "P9_26"
+	input = "P9_28"
 
 	GPIO.setup(out,GPIO.OUT)
 	GPIO.output(out,GPIO.HIGH)

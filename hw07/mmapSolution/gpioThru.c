@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 //            printf("ON\n");
 //            break;
 //        }
-        if(!(*gpio0_datain & P9_26)){
+        if(!(*gpio1_datain & P9_28)){
             *gpio1_setdataout_addr = P9_27;
         }else{
             *gpio1_cleardataout_addr = P9_27;
